@@ -1,4 +1,4 @@
-# SCA
+# String Comparer Application
 
 Application that accepts two strings as input: one string is called "text" and the other is called "subtext".
 and matches the subtext against the text, outputting the character positions of the beginning of each match for the subtext within the text.
