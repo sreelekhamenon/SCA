@@ -1,0 +1,29 @@
+<h2>String Comparer</h2>
+
+<form  #homeForm="ngForm">
+    <div class="form-group">
+      <label for="name">Text <span class="required">*</span></label>
+      <input type="text" class="form-control" id="inputText" required minlength="1" [(ngModel)]="inputText" name="inputText" #inputTextModel="ngModel">
+      <div [hidden]="inputTextModel.valid || inputTextModel.pristine" class="alert alert-danger">Input text is required</div>
+    </div>
+
+    <div class="form-group">
+      <label for="subText">Sub Text <span class="required">*</span></label>
+      <input type="text" class="form-control" id="subText" required minlength="1" [(ngModel)]="subText" name="subText" #subTextModel="ngModel">
+      <div [hidden]="subTextModel.valid || subTextModel.pristine" class="alert alert-danger">Sub text is required</div>
+    </div>
+    
+    <div class="mb-2">
+        <span class="required">*</span> required
+    </div>
+
+    <div class="mb-2">
+        <button id="submitBtn" type="submit" class="btn btn-primary" (click)="getIndexOfSubtext()" [disabled]="!homeForm.form.valid">Get Index Of Subtext</button>
+        <button type="reset" class="ml-2 btn btn-primary" >Reset</button>
+    </div>
+
+  </form>
+
+<div *ngIf="compareResult.IsValid == false" class="alert alert-danger"><strong>Error!</strong> {{ compareResult.Description}}</div>
+
+<div aria-live="polite" *ngIf="compareResult.IsValid==true" class="alert alert-success"><strong>Result:</strong> Matching index/indices of '{{ compareResult.QuerySubText }}' found at {{ compareResult.Description}} of '{{ compareResult.QueryText }}'.</div>
